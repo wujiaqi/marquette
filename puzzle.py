@@ -32,6 +32,9 @@ class Node:
 			expansion.append(self.__makeChildNode(1, empty_slot))
 		return expansion
 
+	def get_path():
+		return None
+
 def tree_search(initial_node, goal):
 	fringe = initial_node.expand()
 	while True:
