@@ -1,0 +1,4 @@
+marquette
+=========
+
+Marquette homework assignments
