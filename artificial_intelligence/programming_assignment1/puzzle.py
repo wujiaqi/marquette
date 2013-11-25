@@ -2,11 +2,14 @@ import math
 
 #Node class which defines the state of the game
 class Node:
+	#ctor
 	def __init__(self, state, parent = None, cost = 0):
 		self.state = state
 		self.parent = parent
 		self.cost = cost
 
+	#produces a child node from this node. Provided the arguments for which element to swap with relative to this node and which node is empty,
+	#the return value is a child node with these two indexes swapped and the parent node defined as self and an increased cost
 	def __makeChildNode(self, swap_index, empty_index):
 		#returns a child node
 		child_state = list(self.state)
@@ -14,6 +17,7 @@ class Node:
 		child_node = Node(child_state, self, self.cost + 1)
 		return child_node
 
+	#print the current node on the console
 	def print_node(self):
 		print "===Game State==="
 		for y in xrange(0,3):
@@ -48,6 +52,7 @@ class Node:
 			expansion.remove(x)
 		return expansion
 
+	#prints the series of states which leads to the solution
 	def get_path(self):
 		path = []
 		node = self
@@ -63,19 +68,6 @@ goal = [1,2,3,4,5,6,7,8,0]
 
 start_node = Node(start)
 goal_node = Node(goal)
-
-#calculate the manhattan distance between two Nodes
-def manhattan_dist(comp1, comp2):
-	manhattan_distance = 0
-	for x in comp1.state:
-		if x == 0:
-			continue
-		linear_distance = int(math.fabs(comp2.state.index(x) - comp1.state.index(x)))
-		manhattan_distance += linear_distance / 3 + linear_distance % 3
-	return manhattan_distance
-
-def dist_from_goal(node):
-	return manhattan_dist(node, goal_node)
 
 
 def tree_search(initial_node, goal):
@@ -103,9 +95,7 @@ def tree_search(initial_node, goal):
 					fringe.append(x)
 			else:
 				node_dict[x_tuple] = x
-				fringe.append(x)	
-		
-		#fringe.sort(key=dist_from_goal)
+				fringe.append(x)
 
 for x in start_node.expand():
 	x.print_node()
