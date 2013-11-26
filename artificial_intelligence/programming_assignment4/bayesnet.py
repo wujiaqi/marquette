@@ -1,4 +1,14 @@
-#Python Baysian Net implementation inspired by Berkeley CS department AIMA http://aima.cs.berkeley.edu/
+##########################################
+#
+# Jiaqi Wu
+# MSCS 5600 Programming Assignment 4
+# Python Baysian Net implementation
+# inspired by Berkeley CS department AIMA 
+# http://aima.cs.berkeley.edu/
+# bayesnet.py
+#
+##########################################
+
 from random import random
 
 class BayesNet:
@@ -73,18 +83,4 @@ def rejection_sampling(x, e, bn, n):
 node = BayesNode
 
 T, F = True, False
-
-def run_test(testcase):
-  f = open('rain_test.csv', 'w')
-  for i in xrange(10, 1010, 10):
-    f.write(str(i))
-    f.write(',')
-    startTime = time.time()
-    sample = rejection_sampling('Rain', e, wetGrass, i)
-    stopTime = time.time()
-    f.write(str(sample[True]))
-    f.write(',')
-    f.write(str((stopTime - startTime)*1000))
-    f.write('\n')
-  f.close()
 

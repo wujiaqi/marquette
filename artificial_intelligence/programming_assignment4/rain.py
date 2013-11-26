@@ -1,3 +1,14 @@
+##########################################
+#
+# Jiaqi Wu
+# MSCS 5600 Programming Assignment 4
+#
+# Sprinkler test case
+#
+# rain.py
+#
+##########################################
+
 import time
 
 from bayesnet import *
