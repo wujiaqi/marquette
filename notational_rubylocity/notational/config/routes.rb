@@ -1,7 +1,11 @@
 Notational::Application.routes.draw do
   get "notational/index"
-
-  get "welcome/index"
+  
+  get '/testdata', to: 'notational#testData'
+  
+  get '/initdata', to: 'notational#getUserData'
+  
+  post 'initializedb', to: 'notational#initializeDb'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
